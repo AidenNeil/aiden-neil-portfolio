@@ -1,0 +1,179 @@
+.hire-section {
+    padding: 60px;
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(135deg, #0b0b0d 0%, #1a1a1d 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hire-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    background: linear-gradient(45deg, #008001, #00ff00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 8s ease infinite;
+}
+
+.hire-section p {
+    color: #ccc;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.hire-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.simple-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.simple-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 128, 1, 0.2);
+}
+
+.simple-card h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.simple-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.simple-card ul li {
+    color: #ccc;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.simple-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.simple-card input,
+.simple-card textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.simple-card input:focus,
+.simple-card textarea:focus {
+    outline: none;
+    border-color: #008001;
+    box-shadow: 0 0 10px rgba(0, 128, 1, 0.2);
+}
+
+.simple-card textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.simple-card button {
+    background: #008001;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.simple-card button:hover {
+    background: #00a001;
+    transform: translateY(-2px);
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Delays for Cards */
+.simple-card:nth-child(1) { animation-delay: 0.2s; }
+.simple-card:nth-child(2) { animation-delay: 0.4s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hire-section {
+        padding: 30px;
+    }
+
+    .hire-section h2 {
+        font-size: 2rem;
+    }
+
+    .hire-section p {
+        font-size: 1rem;
+    }
+
+    .simple-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hire-section {
+        padding: 20px;
+    }
+
+    .hire-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .simple-card {
+        padding: 15px;
+    }
+
+    .simple-card button {
+        width: 100%;
+    }
+} 

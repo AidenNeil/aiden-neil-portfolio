@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hire Me - Adien-Neil McLeod</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="hire-me.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("q-uWxYiMvxgWeGtbn");
+    })();
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">Adien-Neil <span>McLeod</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="active" href="hire-me.html">Hire Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hire-section">
+    <div class="container">
+      <h2>Looking to Collaborate?</h2>
+      <p>I'm a software engineering student passionate about building real-world projects and improving my skills. Whether you're looking for a helping hand, a fresh perspective, or a junior developer to grow with your team — I'd love to connect.</p>
+
+      <div class="hire-options">
+        <div class="simple-card">
+          <h3>What I Can Do</h3>
+          <ul>
+            <li>✅ Frontend Web Development</li>
+            <li>✅ Basic UI Design</li>
+            <li>✅ Team Collaboration</li>
+            <li>✅ Student Projects & Freelance Practice</li>
+          </ul>
+        </div>
+
+        <div class="simple-card">
+          <h3>Let's Talk</h3>
+          <form id="contact-form" onsubmit="return sendEmail(event)">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Adien-Neil McLeod. Portfolio Project</p>
+  </footer>
+
+  <script>
+    function sendEmail(e) {
+      e.preventDefault();
+      
+      const form = document.getElementById('contact-form');
+      const button = form.querySelector('button');
+      const originalText = button.textContent;
+      
+      // Show loading state
+      button.textContent = 'Sending...';
+      button.disabled = true;
+
+      const templateParams = {
+        from_name: form.name.value,
+        from_email: form.email.value,
+        message: form.message.value,
+        to_name: 'Adien-Neil',
+        to_email: 'adienneilmcleod@gmail.com',
+        reply_to: form.email.value
+      };
+
+      emailjs.send('service_vzmb06j', 'template_4cbujnu', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          window.location.href = 'thanks.html';
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('Failed to send message: ' + error.text);
+          button.textContent = originalText;
+          button.disabled = false;
+        });
+
+      return false;
+    }
+  </script>
+</body>
+</html>
